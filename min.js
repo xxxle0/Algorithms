@@ -12,7 +12,7 @@ function min(arr) {
     return min;
 }
 
-const minEl = min([1,3,4,6,0]);
+// const minEl = min([1,3,4,6,0]);
 
 
 
@@ -33,5 +33,30 @@ function min2(arr) {
     return min2;
 }
 
-const min2El = min2([1,3,4,6,0]);
-console.log(min2El);
+// const min2El = min2([1,3,4,6,0]);
+
+// min xth number in Array 
+/* 1 3 4 6 0 and 3 */
+// result: 3
+// try to use bubble sort for smallest ? 
+function minTh(arr, m) {
+    let isSorted = false;
+    let num = 0;
+    while (!isSorted && num !== m) {
+        isSorted = true;
+        for (let i = arr.length - 1; i > 0; i--) {
+            if (arr[i] < arr[i - 1]) {
+                arr[i] = arr[i] + arr[i-1];
+                arr[i-1] = arr[i] - arr[i - 1];
+                arr[i] = arr[i] - arr[i-1];
+                isSorted = false;
+            }
+        }
+        if (num == m - 1) {
+            return arr[num - 1]
+        }
+        num++;
+    }
+}
+
+minTh([6,3,4,1,0], 2);
